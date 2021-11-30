@@ -25,3 +25,32 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+## Formio
+
+What is formio?
+What is formbuilder & formrender?
+How to start?
+-------------------------------------------------------
+Builder:------
+Adding form builder?
+Types of controls can be added.
+Component level settings can be added.
+    Display
+    Data
+    Validation
+    API
+    Conditional
+    Logic
+Creating Wizard
+Adding custom form control.
+-------------------------------------------
+Render:
+Adding pre added data
+Events in render
+Adding data to controls.
+
+Advantages 
+Disadvantages
+
+

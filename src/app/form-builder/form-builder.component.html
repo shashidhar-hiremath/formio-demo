@@ -1,0 +1,3 @@
+<form-builder [form]="schema" #formioObj></form-builder>
+<button class="btn btn-primary" (click)="copySelectedClip($event)" style="width: 300px;margin-top: 20px;float: right;">Copy</button>
+<input type="text" [value]="schema|json" #data style="opacity: 1;">
