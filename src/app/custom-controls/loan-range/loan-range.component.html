@@ -1,1 +1,2 @@
-<input type="range" name="loan-range" [min]="maxLoan" [max]="minLoan" (change)="changeValue($event)">
+<input type="range" name="loan-range" [min]="minLoan" [max]="maxLoan" (change)="changeValue($event)">
+<span>{{value}}</span>

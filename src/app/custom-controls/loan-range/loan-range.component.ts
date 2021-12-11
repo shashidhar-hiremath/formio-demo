@@ -9,15 +9,15 @@ import { FormioCustomComponent } from 'angular-formio';
 export class LoanRangeComponent implements OnInit, OnChanges, OnDestroy,
 FormioCustomComponent<number> {
 
-  @Input() value: number = 0;
+  @Input() value: number = 10000;
   @Input() placeholder: string = '';
 
   @Input() disabled: boolean = false;
 
   @Output() valueChange = new EventEmitter<number>();
 
-  @Input() maxLoan: number = 100;
-  @Input() minLoan: number = 1;
+  @Input() maxLoan: number = 100000;
+  @Input() minLoan: number = 10000;
 
   rangeValue: number = 0;
   constructor() {
@@ -31,7 +31,7 @@ FormioCustomComponent<number> {
   }
 
   changeValue(event: any) {
-
+    this.updateValue(event.target.value);
   }
 
   updateValue(value: number): void {

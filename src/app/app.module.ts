@@ -8,6 +8,7 @@ import { FormBuilderComponent } from './form-builder/form-builder.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormRenderComponent } from './form-render/form-render.component';
 import { FormioCustomControlModule } from './custom-controls/formio-custom-control.module';
+import { FormNavHeaderComponent } from './form-nav-header/form-nav-header.component';
 
 const routes: Routes = [
   {
@@ -24,7 +25,8 @@ const routes: Routes = [
   declarations: [
     AppComponent,
     FormBuilderComponent,
-    FormRenderComponent
+    FormRenderComponent,
+    FormNavHeaderComponent
   ],
   imports: [
     BrowserModule,
