@@ -9,6 +9,7 @@ export class FormDataService {
   formioSchema = {};
   formNavData = new BehaviorSubject<IFromNavInfo[]>([]);
   formNavDetails: IFromNavInfo[] = [];
+  checkOnValueChange: {key: string, currentValue: any}[] = [];
   constructor() {}
 
   createHeader(schema: any = {}) {
@@ -25,8 +26,10 @@ export class FormDataService {
           title: component.properties.navLabel,
           parent: component.properties.parent,
           id: component.properties.id,
-          show: true
+          show: component.properties.show,
+          anyCondition: component.properties.shouldShowOn ? JSON.parse(component.properties.shouldShowOn) : null
         };
+        panels[panel].anyCondition && this.addValueCheckProper(panels[panel].anyCondition);
       }
     }
     this.formNavDetails = panels;
@@ -35,6 +38,32 @@ export class FormDataService {
 
   updateMenuActive(index: number) {
     this.formNavDetails = this.formNavDetails.map((x, i) => ({...x, state: (i === index ? 'active' : 'inactive')}))
+    this.formNavData.next(this.formNavDetails);
+  }
+
+  addValueCheckProper(values: any[]) {
+    values.forEach((value) => {
+      if(!this.checkOnValueChange.find(x => x.key === value.key)) {
+        this.checkOnValueChange.push({key: value.key, currentValue: null});
+      }
+    });
+  }
+
+  checkValueUpdateforMenu(form: any) {
+    const keyChanged = form.changed.component.key;
+    if (this.checkOnValueChange.find(x => x.key === keyChanged)) {
+      const updatedValue = form.data[keyChanged];
+      this.formNavDetails = this.formNavDetails.map((data) => {
+        if (data?.anyCondition?.find(x => x.key === keyChanged)) {
+          if(data.anyCondition[0].value === updatedValue) {
+            data.show = true;
+          } else {
+            data.show = false;
+          }
+        }
+        return {...data}
+      });
+    }
     this.formNavData.next(this.formNavDetails);
   }
 

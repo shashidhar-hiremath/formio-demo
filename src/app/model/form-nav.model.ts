@@ -5,4 +5,5 @@ export interface IFromNavInfo {
     parent: number;
     id: number;
     show: boolean;
+    anyCondition: any[];
 }

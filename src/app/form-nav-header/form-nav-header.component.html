@@ -1,6 +1,6 @@
 <ul class="from-nav-list menu cf" *ngIf="formHeaderDetails$ | async">
     <ng-container *ngFor="let menu of formHeaderDetails$ | async;let i = index">
-        <li (click)="updatePanel(i)" 
+        <li (click)="updatePanel(i)" *ngIf="menu.show"
         [ngClass]="{'isChild': menu.level == 2, 'active': menu.state === 'active'}">
         <span>
             {{ menu.title }}
