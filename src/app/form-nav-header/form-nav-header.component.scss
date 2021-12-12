@@ -22,7 +22,7 @@
 
 /* Main level */
 .menu {			
-  margin: 50px 30px;
+  margin: 20px 30px;
   width: 800px;
   /* http://www.red-team-design.com/horizontal-centering-using-css-fit-content-value */
   width: -moz-fit-content;
@@ -34,7 +34,7 @@
   background: #34495e;
   float: left;
   position: relative;
-  transform: skewX(25deg);
+  transform: skewX(15deg);
 }
 
 .menu span {

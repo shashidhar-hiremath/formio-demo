@@ -1,5 +1,12 @@
-<app-form-nav-header [formioObj]="formioObj"></app-form-nav-header>
+<div style="display: inline-block;">
+    <button class="btn btn-primary" (click)="addPrefilledData($event)" style="width: 150px;margin-top: 20px;margin-right: 20px;float: left;">Pre Fill Data</button>
+    <button class="btn btn-primary" (click)="toggleNav($event)" style="width: 150px;margin-top: 20px;float: left;">Toggle Nav</button>
+</div>
+<app-form-nav-header [formioObj]="formioObj" *ngIf="showCustomFormNav"></app-form-nav-header>
 <formio class="form-io-custom-ui"
+    [ngClass]="{'show-nav': showCustomFormNav}"
     [form]="schema"
+    [submission]="{data: preFilledData}"
     #formioObj
+    (submit)="onSubmit($event)"
     [refresh]="refreshForm"></formio>
